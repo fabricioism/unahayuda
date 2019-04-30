@@ -49,7 +49,16 @@ class TareaControllerV extends Controller
      */
     public function show($id)
     {
-        //
+        $id = $request->user()->idVoluntario($request);
+        $tareas = DB::table('Tarea')
+                    ->join('Asignacion', 'Tarea.codigo', '=', 'Asignacion.tarea_codigo')
+                    ->join('Lista', 'Tarea.lista_id', '=', 'Lista.id')
+                    ->join('Status', 'Tarea.status_id', '=', 'Status.id')
+                    ->join('Tipo', 'Tarea.tipo_id', '=', 'Tipo.id')
+                    ->select('Tarea.codigo', 'Tarea.nombre', 'Tarea.descripcion', 'Lista.nombre as lnombre', 'Tipo.nombre as tnombre', 'Status.nombre as snombre')
+                    ->where('Asignacion.voluntario_id',$id)
+                    ->get();
+        return view ('voluntarios.tarea.show', compact("tareas"));
     }
 
     /**
