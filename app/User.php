@@ -28,6 +28,14 @@ class User extends Authenticatable
         return $id;
     }
 
+    public function idVoluntario($request){
+        $id = DB::table('Voluntario')
+        ->select('id')
+        ->where('correo', '=', $request->user()->email)
+        ->get();
+        return $id;
+    }
+
     /**
      * The attributes that are mass assignable.
      *
