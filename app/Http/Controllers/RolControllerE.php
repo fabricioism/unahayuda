@@ -79,7 +79,14 @@ class RolControllerE extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $results = DB::select('
+            DECLARE @pbOcurrioError INT, @pcMensaje varchar(1000)
+            EXEC dbo.SP_UPDATE_ROL :id, :nombre, :descripcion, @pcMensaje = @pcMensaje OUTPUT, @pbOcurrioError = @pbOcurrioError OUTPUT
+            SELECT  @pcMensaje AS mensaje, @pbOcurrioError as error',
+                [':id'=> $id,
+                ':nombre' => $request->nombre,
+                ':descripcion' => $request->descripcion]);
+        return redirect("/encargados/rol");
     }
 
     /**
