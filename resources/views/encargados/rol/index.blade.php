@@ -29,7 +29,7 @@
             <td> {{ $rol->nombre }} </td>
             <td>{{ $rol->descripcion}}</td>
             <th>
-              <a href="#" class="btn btn-success"><i class="fas fa-pencil-alt"></i> Editar</a>
+              <a href="{{route('rol.edit', $rol->id)}}" class="btn btn-success"><i class="fas fa-pencil-alt"></i> Editar</a>
             </th>
             <th>
               Eliminar
