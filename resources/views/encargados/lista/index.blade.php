@@ -12,7 +12,7 @@
       <table class="table table-striped table-bordered table-hover" style="text-align:center;">
         <thead class="thead-dark">
           <tr class="warning">
-            <th><i class="fas fa-pills"></i> Nombre de la lista</th>
+            <th><i class="fas fa-pills"></i>Nombre de la lista</th>
             <th>Descripcion</th>
             <th></th>
             <th></th>
